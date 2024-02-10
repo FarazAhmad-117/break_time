@@ -1,8 +1,6 @@
 
 export const imageUrl = import.meta.env.VITE_TMDB_IMAGE_URL;
-const baseUrl = import.meta.env.VITE_TMDB_API_URL;
-const apikey = import.meta.env.VITE_TMDB_APIKEY;
-const token = import.meta.env.VITE_TMDB_API_READ_ACCESS_TOKEN;
+const token = import.meta.env.VITE_TMDB_MY_ULTIMATE_TOKEN;
 
 
 
@@ -12,7 +10,7 @@ export const fetchTrendingWebSeries= async(page=1)=>{
     method: 'GET',
     headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2YThiNjUwYjI4ZDFiMTJjMDYyMmNlYjQ2YWQyOTFlYyIsInN1YiI6IjY1YzRjMjg5MGMyNzEwMDE3ZTc3ZjgwOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0jV1Ow-_DaW7GdOkRe-CTgSmYOyaW7dBDkPPOm00zGA'
+            Authorization: token
         }
     };
     try{
@@ -32,7 +30,7 @@ export const fetchTrendingMovies = async(page=1)=>{
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2YThiNjUwYjI4ZDFiMTJjMDYyMmNlYjQ2YWQyOTFlYyIsInN1YiI6IjY1YzRjMjg5MGMyNzEwMDE3ZTc3ZjgwOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0jV1Ow-_DaW7GdOkRe-CTgSmYOyaW7dBDkPPOm00zGA'
+            Authorization: token
         }
     };
     try{
@@ -51,7 +49,7 @@ export const fetchSeasonDataById = async(id)=>{
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2YThiNjUwYjI4ZDFiMTJjMDYyMmNlYjQ2YWQyOTFlYyIsInN1YiI6IjY1YzRjMjg5MGMyNzEwMDE3ZTc3ZjgwOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0jV1Ow-_DaW7GdOkRe-CTgSmYOyaW7dBDkPPOm00zGA'
+            Authorization: token
         }
     };
     try{
@@ -69,7 +67,7 @@ export const fetchMovieDataByID=async(id)=>{
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2YThiNjUwYjI4ZDFiMTJjMDYyMmNlYjQ2YWQyOTFlYyIsInN1YiI6IjY1YzRjMjg5MGMyNzEwMDE3ZTc3ZjgwOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0jV1Ow-_DaW7GdOkRe-CTgSmYOyaW7dBDkPPOm00zGA'
+            Authorization: token
         }
     };
     try{
@@ -86,7 +84,7 @@ export const fetchDataFromUrl=async(url)=>{
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2YThiNjUwYjI4ZDFiMTJjMDYyMmNlYjQ2YWQyOTFlYyIsInN1YiI6IjY1YzRjMjg5MGMyNzEwMDE3ZTc3ZjgwOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0jV1Ow-_DaW7GdOkRe-CTgSmYOyaW7dBDkPPOm00zGA'
+            Authorization: token
         }
     };
     try{
@@ -111,7 +109,7 @@ export const fetchMoviesDataFromQuery = async(query)=>{
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2YThiNjUwYjI4ZDFiMTJjMDYyMmNlYjQ2YWQyOTFlYyIsInN1YiI6IjY1YzRjMjg5MGMyNzEwMDE3ZTc3ZjgwOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0jV1Ow-_DaW7GdOkRe-CTgSmYOyaW7dBDkPPOm00zGA'
+            Authorization: token
         }
     };
     try{
@@ -137,7 +135,7 @@ export const fetchSeriesDataFromQuery = async(query)=>{
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2YThiNjUwYjI4ZDFiMTJjMDYyMmNlYjQ2YWQyOTFlYyIsInN1YiI6IjY1YzRjMjg5MGMyNzEwMDE3ZTc3ZjgwOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0jV1Ow-_DaW7GdOkRe-CTgSmYOyaW7dBDkPPOm00zGA'
+            Authorization: token
         }
     };
     try{
