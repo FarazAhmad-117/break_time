@@ -1,0 +1,19 @@
+.tray-wrapper{
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 20px 0px;
+}
+.tray-wrapper::-webkit-scrollbar{
+    width: 6px;
+}
+.tray-wrapper::-webkit-scrollbar-thumb{
+    /* background-color: #080313; */
+    background: linear-gradient(90deg,#080313,#1b0b3f,#080313);
+    border-radius: 12px;
+    width: 6px;
+}
+.tray-wrapper::-webkit-scrollbar-track {
+    background-color: #2d3748; 
+    border-radius: 12px;
+}
