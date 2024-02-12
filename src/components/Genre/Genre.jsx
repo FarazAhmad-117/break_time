@@ -22,6 +22,7 @@ function Genre() {
         }
         setMaxPages(res.total_pages)
         setData(res.results);
+        window.moveTo(0,0);
         setisLoading(false);
     }
     useEffect(()=>{
