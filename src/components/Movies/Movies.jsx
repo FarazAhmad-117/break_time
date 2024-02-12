@@ -2,26 +2,33 @@ import React, { useEffect, useState } from 'react'
 import MovieCard from '../MovieCard';
 import Loader from '../Loader';
 import { fetchDataFromUrl, fetchMoviesDataFromQuery } from '../../TMDB';
+import { useNavigate, useParams } from 'react-router';
 
 function Movies() {
-    const [page, setPage] = useState(1);
+    const {p} = useParams();
     const [searchVal,setSearchVal]=useState('');
+    const [isLoading,setIsLoading] = useState(false);
     const [data,setData] = useState([])
+    const navigate = useNavigate();
     const fetchData = async()=>{
-        let res = await fetchDataFromUrl(`https://api.themoviedb.org/3/discover/movie?include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`);
+        setIsLoading(true);
+        let res = await fetchDataFromUrl(`https://api.themoviedb.org/3/discover/movie?include_video=false&language=en-US&page=${p}&sort_by=popularity.desc`);
         await setData(res.results);
         window.scrollTo(0,0);
+        setIsLoading(false);
     }
     useEffect(() => {
         fetchData();
-    }, [page]);
+    }, [p]);
     const handleSearch=async()=>{
+        await setIsLoading(true);
         let val = searchVal;
         setSearchVal('');
         let qdata = Array.from(val.split(' '));
         let newdata =await fetchMoviesDataFromQuery(qdata)
         if(newdata.results.length > 0)
             setData(newdata.results);
+        setIsLoading(false);
     }
 
     return (
@@ -29,7 +36,7 @@ function Movies() {
             className='p-3 bg-white'
         >
             <div
-                className='py-3 px-4 my-3 mx-auto '
+                className='py-3 px-1 sm:px-4 my-3 mx-auto '
             >
                 <div className='bg-gray-200 my-1 py-1 px-1 rounded-lg flex sm:justify-end sm:text-xl sm:py-2 sm:px-4'>
                     <input 
@@ -53,40 +60,48 @@ function Movies() {
                 <div className='w-full py-3 px-4 flex justify-between gap-3'>
                     <button
                     onClick={()=>{
-                        if(page>1){
-                            setPage(prev=>prev-1);
+                        if(p>1){
+                            navigate(`/movies/${p-1}`);
                         }
                     }} 
-                    className={` ${page>1?'bg-blue-500 hover:bg-blue-600':'bg-gray-500 hover:bg-gray-600'} py-1 px-2 text-white rounded-full active:scale-[.95] duration-200 text-sm justify-self-start`}
-                    disabled={page<=1}
-                    >Previous Page</button>
-                    <div className='text-xl bg-stone-800 py-2 px-5 rounded-lg text-white text-center'><span className='hidden sm:inline-block'>Current Page :</span> {page}</div>
+                    className={` ${p>1?'bg-blue-500 hover:bg-blue-600':'bg-gray-500 hover:bg-gray-600'} py-1 px-2 text-white rounded-full active:scale-[.95] duration-200 min-w-[80px] text-sm justify-self-start`}
+                    disabled={p<=1}
+                    >Previous</button>
+                    <div className='text-xl bg-stone-800 py-2 px-5 rounded-lg text-white text-center'><span className='hidden sm:inline-block'>Current Page :</span> {p}</div>
                     <button
-                    onClick={()=>setPage(prev=>prev+1)} 
-                    className='bg-blue-500 py-1 px-2 text-white rounded-full text-sm hover:bg-blue-600 active:scale-[.95] duration-200 justify-self-end'>Next Page</button>
+                    onClick={()=>navigate(`/movies/${Number(p)+1}`)} 
+                    className='bg-blue-500 py-1 px-2 text-white rounded-full text-sm hover:bg-blue-600 active:scale-[.95] duration-200 justify-self-end min-w-[80px]'>Next</button>
                 </div>
-                {data? <div
-                    className='py-3 px-4  flex flex-wrap mx-auto justify-center gap-2'
-                    >{
-                        data && data.map((m,i)=>(
-                            <MovieCard key={i} movie={m} type={1} />
-                        ))
-                    }
-                </div>: <Loader/>}
+                {
+                    isLoading ?
+                    <div className='flex justify-center items-center max-w-[70px] mx-auto min-h-[80dvh]'>
+                        <Loader/>
+                    </div>
+                    :
+                    <div
+                        className='py-3 px-1 sm:px-4  flex flex-wrap mx-auto justify-center gap-2 min-h-[80dvh] sm:gap-y-5'
+                        >
+                        {
+                            data && data.map((m,i)=>(
+                                <MovieCard key={i} movie={m} type={1} />
+                            ))
+                        }
+                    </div>
+                }
                 <div className='w-full py-3 px-4 flex justify-between gap-3'>
                     <button
                     onClick={()=>{
-                        if(page>1){
-                            setPage(prev=>prev-1);
+                        if(p>1){
+                            navigate(`/movies/${p-1}`);
                         }
                     }} 
-                    className={` ${page>1?'bg-blue-500 hover:bg-blue-600':'bg-gray-500 hover:bg-gray-600'} py-1 px-2 text-white rounded-full active:scale-[.95] duration-200 text-sm justify-self-start`}
-                    disabled={page<=1}
-                    >Previous Page</button>
-                    <div className='text-xl bg-stone-800 py-2 px-5 rounded-lg text-white text-center'><span className='hidden sm:inline-block'>Current Page :</span> {page}</div>
+                    className={` ${p>1?'bg-blue-500 hover:bg-blue-600':'bg-gray-500 hover:bg-gray-600'} py-1 px-2 text-white rounded-full active:scale-[.95] duration-200 min-w-[80px] text-sm justify-self-start`}
+                    disabled={p<=1}
+                    >Previous</button>
+                    <div className='text-xl bg-stone-800 py-2 px-5 rounded-lg text-white text-center'><span className='hidden sm:inline-block'>Current Page :</span> {p}</div>
                     <button
-                    onClick={()=>setPage(prev=>prev+1)} 
-                    className='bg-blue-500 py-1 px-2 text-white rounded-full text-sm hover:bg-blue-600 active:scale-[.95] duration-200 justify-self-end'>Next Page</button>
+                    onClick={()=>navigate(`/movies/${Number(p)+1}`)} 
+                    className='bg-blue-500 py-1 px-2 text-white rounded-full text-sm hover:bg-blue-600 active:scale-[.95] duration-200 justify-self-end min-w-[80px]'>Next</button>
                 </div>
             </div>
         </div>

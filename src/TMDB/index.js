@@ -146,3 +146,56 @@ export const fetchSeriesDataFromQuery = async(query)=>{
         console.error(err);
     }
 }
+
+export const fetchMoviesDataFromGenre = async(genres,page,and)=>{
+    let q="";
+    for(let i=0;i<genres.length;i++){
+        q+=genres[i];
+        if(i!=genres.length -1){
+            if(and)
+                q+=",";
+            else q+="|";
+        }
+    }
+    let url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${q}`;
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: token
+        }
+    };
+    try{
+        const res = await fetch(url, options);
+        const data = await res.json();
+        return data;
+    }catch(err){
+        console.error(err);
+    }
+}
+export const fetchSeriesDataFromGenre = async(genres,page,and)=>{
+    let q="";
+    for(let i=0;i<genres.length;i++){
+        q+=genres[i];
+        if(i!=genres.length -1){
+            if(and)
+                q+=",";
+            else q+="|";
+        }
+    }
+    let url = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${q}`;
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: token
+        }
+    };
+    try{
+        const res = await fetch(url, options);
+        const data = await res.json();
+        return data;
+    }catch(err){
+        console.error(err);
+    }
+}

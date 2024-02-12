@@ -6,7 +6,7 @@ import { Route, createBrowserRouter, createRoutesFromElements } from 'react-rout
 import { RouterProvider } from 'react-router'
 import ErrorBoundry from './components/ErrorBoundry.jsx'
 import Home from './components/Home/Home.jsx'
-import { About, Contact, Github, MoviePage, MoviePlayer, Movies, SeriesPage, SeriesPlayer, WebSeries } from './components/index.js'
+import { About, Contact, Genre, Github, MoviePage, MoviePlayer, Movies, SeriesPage, SeriesPlayer, WebSeries } from './components/index.js'
 import { loadGitData } from './components/Github/Github.jsx'
 
 const router = createBrowserRouter(
@@ -17,8 +17,8 @@ const router = createBrowserRouter(
     errorElement={<ErrorBoundry/>}
     >
       <Route path='' element={<Home/>} />
-      <Route path='movies' element={<Movies/>} />
-      <Route path='tv' element={<WebSeries/>} />
+      <Route path='movies/:p' element={<Movies/>} />
+      <Route path='tv/:p' element={<WebSeries/>} />
       <Route path='about' element={<About/>} />
       <Route path='github' element={<Github/>} loader={loadGitData} />
       <Route path='contact' element={<Contact/>} />
@@ -26,6 +26,7 @@ const router = createBrowserRouter(
       <Route path='tvplay/:seriesId' element={<SeriesPage/>}/>
       <Route path='tv-pl/:seasonId/:seasonNum/:episodeNum' element={<SeriesPlayer/>}/>
       <Route path='mv-pl/:movieId' element={<MoviePlayer/>} />
+      <Route path="genre" element={<Genre/>}/>
     </Route>
   )
 )

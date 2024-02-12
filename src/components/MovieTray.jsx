@@ -13,16 +13,20 @@ function MovieTray({title,movies, type}) {
             <h2 className="text-2xl font-semibold sm:rounded-full text-white mb-4 bg-stone-700 py-2 px-7" 
             onClick={()=>{
                 if(type===1){
-                    navigate("/movies");
+                    navigate("/movies/1");
                 }else{
-                    navigate("/tv");
+                    navigate("/tv/1");
                 }
             }}
             >{title} {">>"} </h2>
-            <div className="tray-wrapper gap-2 pb-15 h-full sm:min-h-[450px]">
+            <div className="px-3 tray-wrapper gap-2 pb-15 h-full sm:min-h-[450px]">
                 {movies ? movies.map((movie) => {
                     return <MovieCard key={movie.id} movie={movie} type = {type}/>
-                }) : <Loader/>}
+                }) : 
+                <div className='flex justify-center items-center max-w-[70px] mx-auto sm:min-h-[450px]'>
+                    <Loader/>
+                </div>
+                }
             </div>
         </div>
     </div>

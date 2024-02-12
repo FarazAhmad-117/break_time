@@ -14,6 +14,7 @@ import MoviePage from "./MoviePlayer/MoviePage";
 import SeriesPage from "./SeriesPlayer/SeriesPage";
 import { SeriesPlayer } from "./SeriesPlayer/Components";
 import MoviePlayer from "./MoviePlayer/MoviePlayer";
+import Genre from "./Genre/Genre";
 
 export {
     NavBar,
@@ -32,4 +33,5 @@ export {
     SeriesPage,
     SeriesPlayer,
     MoviePlayer,
+    Genre
 };
