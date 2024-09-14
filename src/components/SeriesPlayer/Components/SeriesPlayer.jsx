@@ -12,7 +12,7 @@ function SeriesPlayer() {
             allowFullScreen
             >
             <iframe 
-            src={'https://vidsrc.to/embed/tv/'+seasonId+'/'+seasonNum+'/'+episodeNum}
+            src={'https://vidsrc.xyz/embed/tv/'+seasonId+'/'+seasonNum+'/'+episodeNum} //vidsrc.to
             className='min-h-[30dvh] sm:min-h-[80dvh] mx-auto'
             width={'95%'} 
             frameborder="0"
