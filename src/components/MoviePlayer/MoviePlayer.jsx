@@ -15,7 +15,7 @@ function MoviePlayer() {
             allowFullScreen
             >
             <iframe 
-            src={'https://vidsrc.to/embed/movie/'+movieId}
+            src={'https://vidsrc.xyz/embed/movie/'+movieId} // vidsrc.to
             className='min-h-[30dvh] sm:min-h-[80dvh] mx-auto'
             width={'95%'} 
             frameBorder="0"
