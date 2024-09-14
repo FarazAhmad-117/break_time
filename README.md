@@ -22,6 +22,7 @@ Break Time aims to be the go-to platform for streaming movies and TV shows in En
 - **Remote Resources**: Streams are fetched from remote servers, ensuring a lightweight and efficient application.
 - **No Download Links**: Currently, the app does not provide download links, focusing on streaming-only.
 
+
 ## Installation
 
 To get started with Break Time, follow these steps:
